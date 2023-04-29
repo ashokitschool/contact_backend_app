@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
  name: contactbackendappdeployment
 spec:
- replicas: 2
+ replicas: 1
  selector:
    matchLabels:
      app: contactbackend
@@ -25,11 +25,10 @@ kind: Service
 metadata:
  name: contactbackendsvc
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
    app: contactbackend
   ports:
    - port: 80
      targetPort: 8080
-     nodePort: 30001
 ...
